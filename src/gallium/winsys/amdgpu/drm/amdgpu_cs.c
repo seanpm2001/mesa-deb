@@ -1146,8 +1146,7 @@ static unsigned amdgpu_cs_get_buffer_list(struct radeon_cmdbuf *rcs,
     if (list) {
         for (unsigned i = 0; i < num_real_buffers; i++) {
             list[i].bo_size = real_buffers->buffers[i].bo->base.size;
-            list[i].vm_address =
-               amdgpu_va_get_start_addr(get_real_bo(real_buffers->buffers[i].bo)->va_handle);
+            list[i].vm_address = get_real_bo(real_buffers->buffers[i].bo)->gpu_address;
             list[i].priority_usage = real_buffers->buffers[i].usage;
         }
     }
